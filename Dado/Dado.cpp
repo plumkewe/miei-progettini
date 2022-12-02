@@ -34,5 +34,5 @@ int main() {
 
     cout << "\nAlla prossima";
 
-	return 0;
+    return 0;
 }

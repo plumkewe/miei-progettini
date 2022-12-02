@@ -17,8 +17,8 @@ int main() {
 
     cout << "Ciao sono un dado, quanti ne vuoi lanciare? ";
 
-    while (!(cin >> iQuanti))
-    {
+    while (!(cin >> iQuanti)) {
+        
         cout << "[!] Devi inserire un numero: ";
         cin.clear();
         cin.ignore(222, '\n');
@@ -51,13 +51,18 @@ int main() {
                 cout << "\nÈ uscito il numero: " << sMemonumero + 1 << " sul " << i + 1 << " dado " << aDado[sMemonumero];
                 sSomma += sMemonumero + 1;
 
-            } else
+            }
+            
+            else
+                
                 cout << "\nSul dado è uscito il numero: " << sMemonumero + 1 << " " << aDado[sMemonumero];
 
         }
 
         if (iQuanti > 1)
+
             cout << "\nLa somma dei tutti dadi è pari a: " << sSomma << '\n';
+
 
         cout << "\nVuoi lanciare un'altro dado? [S/N]: ";
         cin >> iConferma;
@@ -69,6 +74,7 @@ int main() {
 
 
     cout << "\nAlla prossima";
+    
 
     return 0;
 }
