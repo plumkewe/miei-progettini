@@ -5,7 +5,7 @@ using namespace std;
 
 //  Creato: 02/12/22
 //  Da: swampkewe
-//  Versione: 0.00 (non ottimizzata!)
+//  Versione: 0.01 (non ottimizzata!)
 
 
 int main() {
@@ -47,15 +47,15 @@ int main() {
 		
 		int sMemonumero = dist(rNumerocasuale);
 		
-		if (iFino % 2 == 0 && iFino >= 16)
-			
-			iFino = iFino / 2;
+//		if (iFino % 2 == 0 && iFino >= 16)
+//
+//			iFino = iFino / 2;
+//
+//		else if (iFino % 3 == 0 && iFino >= 21)
+//
+//			iFino = iFino / 3;
 		
-		else if (iFino % 3 == 0 && iFino >= 21)
-			
-			iFino = iFino / 3;
-		
-		
+		iFino = 10; // vabbè
 		
 		cout << "\n[+] Hai " << iFino << " tentativi!\n";
 		
