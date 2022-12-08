@@ -5,8 +5,54 @@ using namespace std;
 
 //  Creato: 07/12/22
 //  Da: swampkewe
-//  Versione: 0.01
-//  Fa più schivo di prima
+//  Versione: 0.03
+
+void mostralamappa(string aCopiamappa[]){
+    
+    for (int i = 1; i < 10; i++) {
+        
+        
+        if (i == 4 || i == 7 || i == 10) {
+            
+            cout << '\n';
+        }
+        
+        cout << aCopiamappa[i];
+        
+    }
+    
+}
+
+void controllo (int &iDove){
+    
+    while (!(cin >> iDove)) {
+        
+        cout << "[!] Posizione non valida: ";
+        
+        cin.clear();
+        cin.ignore(123, '\n');
+    }
+    
+}
+
+void erorre(int aTavoladagioco[], int &iDove){
+    
+    controllo(iDove);
+    
+    while (aTavoladagioco[iDove] == 1 || aTavoladagioco[iDove] == 2){  //  lo potevo mettere in un while unico, ma voglio che stampi dei messaggi diversi
+        cout << "[!] La posizione è già occupata, riprova: ";
+        controllo(iDove);
+        
+    }
+    
+    while (iDove > 9 || iDove < 1){
+        cout << "[!] Non puoi uscire dal layout, riprova: ";
+        controllo(iDove);
+        
+    }
+    
+}
+
 
 
 
@@ -22,98 +68,60 @@ int main() {
     fill(aTavoladagioco, aTavoladagioco + sQuanti, 0);
     fill(aCopiamappa, aCopiamappa + sQuanti, "⬜️");
 
-    cout << "Layout del gioco è seguente:\n  1️⃣2️⃣3️⃣ \n  4️⃣5️⃣6️⃣ \n ️7️⃣8️⃣9️⃣ \n\n";
+    cout << "Layout del gioco è seguente:\n[1][2][3]\n[4][5][6]\n[7][8][9]";
+    cout << "\nIl giocatore uno gioca con la ❌ e il giocatore due con ⭕️";
 
     while (sQuanti > sTentativi){
 
         sTentativi ++;
+        
+        if (sTentativi == 10){
+            
+            cout << "Nessuno ha vinto!";
+            return 0;
+            
+        }
 
 
         if (sTentativi % 2 == 0) {
-            cout << "Tocca al giocatore due: ";
-            cin >> iDove;
-
-            while (aTavoladagioco[iDove] == 1 || aTavoladagioco[iDove] == 2){
-                cout << "[!] La posizione è già occupata, riprova: ";
-                cin >> iDove;
-
-            }
-
-            while (iDove > 9 || iDove < 1){
-                cout << "[!] Non puoi uscire dal layout, riprova: ";
-                cin >> iDove;
-
-            }
-
-            aTavoladagioco[iDove] = 1;
+            cout << "\n\nTocca al giocatore due: ";
+            
+            erorre(aTavoladagioco, iDove);
+            
+            aTavoladagioco[iDove] = 2;
             aCopiamappa[iDove] = "⭕️";
             
 
         } else {
-            cout << "Tocca al giocatore uno: ";
-            cin >> iDove;
+            cout << "\n\nTocca al giocatore uno: ";
 
-            while (aTavoladagioco[iDove] == 1 || aTavoladagioco[iDove] == 2){
-                cout << "[!] La posizione è già occupata, riprova: ";
-                cin >> iDove;
+            erorre(aTavoladagioco, iDove);
 
-            }
-
-            while (iDove > 9 || iDove < 1){
-                cout << "[!] Non puoi uscire dal layout, riprova: ";
-                cin >> iDove;
-
-            }
-
-            aTavoladagioco[iDove] = 2;
+            aTavoladagioco[iDove] = 1;
             aCopiamappa[iDove] = "❌";
 
         }
         
-        //  ajajjaja
+        //  non so come otimizzare questa parte
 
         if (aTavoladagioco[1] == 1 && aTavoladagioco[2] == 1 && aTavoladagioco[3] == 1 || aTavoladagioco[4] == 1 && aTavoladagioco[5] == 1 && aTavoladagioco[6] == 1 || aTavoladagioco[7] == 1 && aTavoladagioco[8] == 1 && aTavoladagioco[9] == 1 || aTavoladagioco[1] == 1 && aTavoladagioco[4] == 1 && aTavoladagioco[7] == 1 || aTavoladagioco[2] == 1 && aTavoladagioco[5] == 1 && aTavoladagioco[8] == 1 || aTavoladagioco[3] == 1 && aTavoladagioco[6] == 1 && aTavoladagioco[9] == 1 || aTavoladagioco[1] == 1 && aTavoladagioco[5] == 1 && aTavoladagioco[9] == 1 || aTavoladagioco[3] == 1 && aTavoladagioco[5] == 1 && aTavoladagioco[7] == 1 ||aTavoladagioco[1] == 2 && aTavoladagioco[2] == 2 && aTavoladagioco[3] == 2 || aTavoladagioco[4] == 2 && aTavoladagioco[5] == 2 && aTavoladagioco[6] == 2 || aTavoladagioco[7] == 2 && aTavoladagioco[8] == 2 && aTavoladagioco[9] == 2 || aTavoladagioco[1] == 2 && aTavoladagioco[4] == 2 && aTavoladagioco[7] == 2 || aTavoladagioco[2] == 2 && aTavoladagioco[5] == 2 && aTavoladagioco[8] == 2 || aTavoladagioco[3] == 2 && aTavoladagioco[6] == 2 && aTavoladagioco[9] == 2 || aTavoladagioco[1] == 2 && aTavoladagioco[5] == 2 && aTavoladagioco[9] == 2 || aTavoladagioco[3] == 2 && aTavoladagioco[5] == 2 && aTavoladagioco[7] == 2 ){
 
             if (sTentativi % 2 == 0) {
 
-                cout << "\n[+] Giocatore 2 (⭕️) ha vinto";
+                cout << "\n[+] Giocatore 2 (⭕️) ha vinto\n";
 
             } else {
 
-                cout << "\n[+] Giocatore 1 (❌) ha vinto";
+                cout << "\n[+] Giocatore 1 (❌) ha vinto\n";
             }
-            
-            cout << '\n';
-            
-            for (int i = 1; i < 10; i++) {
-                
-                if (i == 4 || i == 7 || i == 10) {
-                    
-                    cout << '\n';
-                }
-                
-                cout << aCopiamappa[i];
-                
-            }
-            
-            cout << '\n';
+        
+            mostralamappa(aCopiamappa);
 
             return 0;
 
         }
-        
-        for (int i = 1; i < 10; i++) {
-            
-            if (i == 4 || i == 7 || i == 10) {
-                
-                cout << '\n';
-            }
-            
-            cout << aCopiamappa[i];
-
-        }
-        
-        cout << '\n' << '\n';
+    
+        mostralamappa(aCopiamappa);
         
 
     }
