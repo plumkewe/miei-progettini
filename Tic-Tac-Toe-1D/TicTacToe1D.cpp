@@ -5,7 +5,7 @@ using namespace std;
 
 //  Creato: 07/12/22
 //  Da: swampkewe
-//  Versione: 0.03
+//  Versione: 0.10
 
 void mostralamappa(string aCopiamappa[]){
     
