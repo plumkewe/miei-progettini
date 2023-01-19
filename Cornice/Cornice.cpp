@@ -11,19 +11,21 @@ int main()
 {
 	setlocale(LC_ALL, "italian");
 		
-	int      bordi = 1;;
+	int      bordi = 1;
 	char carattere = '-';
 	string  parola ;
 	
 //  ===== settings:
 	const bool    in_mezzo_char = true;
 	const short int spazziatura = 3;
+	const bool       inversione = false;
 	
 	cout << "Inserisci una parola: ";
 	getline(cin, parola);
 	
 	cout << "Inserisci xBordi: ";
 	cin  >> bordi; //  bords xNum
+	
 	
 	cout << "Inserisci un carattere: ";
 	cin  >> carattere;  // char
@@ -52,6 +54,9 @@ int main()
 				
 				word_k++;
 			}
+			else if (inversione == true && (prime_i == 1 && second_i >= 1 && second_i < lunghezza - 1 || prime_i == altezza - 2 && second_i < lunghezza - 1 && second_i >= 1 || second_i == lunghezza - 2 && prime_i >= 1 && prime_i <= altezza - 2 || second_i == 1 && prime_i >= 1 && prime_i <= altezza - 2))
+				cout << setw(spazziatura) << " "; //  bho non so farlo in un'altro modo
+	
 			else
 				cout << setw(spazziatura) << carattere;
 		}
